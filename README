@@ -1,3 +1,6 @@
+This is a simple command shell written in C that I wrote for my COMS
+W4118 Operating Systems course.
+
 FILES INCLUDED
 
 shell.c (shell.h) - Contains the main method of the program and 
