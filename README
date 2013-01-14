@@ -10,6 +10,10 @@ list implementation that I had previously written for COMS W3157.
 
 DESIGN COMMENTS
 
-All necessary functionality is up and running. In order to run basic commands, the path must be added to the paths list (path + /usr/bin). Additional paths can be added or subtracted with path +/- command functionality. The "history" command will allow the user to view the previously entered commands.
+All necessary functionality is up and running. In order to run basic 
+commands, the path must be added to the paths list (path + /usr/bin). 
+Additional paths can be added or subtracted with path +/- command 
+functionality. The "history" command will allow the user to view the 
+previously entered commands.
 
 
