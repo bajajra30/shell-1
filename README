@@ -5,92 +5,11 @@ most of the computations/manipulations happening.
 
 list.c (list.h) - Contains the basic implementation of a linked list. It 
 should be noted that to create these files I based them off of a linked 
-list implementation that I had previosuly written for COMS W3157.
+list implementation that I had previously written for COMS W3157.
 
 
-COMMENTS
+DESIGN COMMENTS
 
-Based on how a real shell operates with history, I included commands that 
-had caused errors, or were not even really commands. I also included 
-history in the history listings, but the history listing that was just 
-called will not appear in the list for that time. Upon the next history 
-call you will see the previous history call somewhere in the list.
-
-I did not have time to run checkpath.pl and check the style, so I 
-apologize for the potentially large amount of style errors you might
-find.
-
-All of the basic functionality should be up and running, but the 
-error checking in general is not that robust. Specifically with 
-subtracting paths is a little spotty. I remove trailing / and add 
-leading / to all paths entered into the paths list but I allow for 
-duplicates in there. Then when path - [name] is called, the program 
-is only able to remove one of the items if there was a duplicate. 
+All necessary functionality is up and running. In order to run basic commands, the path must be added to the paths list (path + /usr/bin). Additional paths can be added or subtracted with path +/- command functionality. The "history" command will allow the user to view the previously entered commands.
 
 
-TEST OUTPUT
-
-w4118@osvm:shell$ ./w4118_sh 
-$ ls
-error: No such file or command
-$ path + /bin
-$ ls
-list.c	list.o	  README   shell.h  test
-list.h	Makefile  shell.c  shell.o  w4118_sh
-$ mkdir test1
-$ cd test1
-$ ls -la
-total 8
-drwxr-xr-x 2 w4118 w4118 4096 2012-09-17 23:13 .
-drwxr-xr-x 4 w4118 w4118 4096 2012-09-17 23:13 ..
-$ cd ..
-$ ls
-list.c	list.o	  README   shell.h  test   w4118_sh
-list.h	Makefile  shell.c  shell.o  test1
-$ history
-[1] ls
-[2] path + /bin
-[3] ls
-[4] mkdir test1
-[5] cd test1
-[6] ls -la
-[7] cd ..
-[8] ls
-$ !6
-total 96
-drwxr-xr-x 4 w4118 w4118  4096 2012-09-17 23:13 .
-drwxr-xr-x 4 w4118 w4118  4096 2012-09-17 21:44 ..
--rw-r--r-- 1 w4118 w4118    13 2012-09-17 05:22 .gitignore
--rw-r--r-- 1 w4118 w4118  2451 2012-09-17 22:24 list.c
--rw-r--r-- 1 w4118 w4118   360 2012-09-17 18:14 list.h
--rw-r--r-- 1 w4118 w4118  1860 2012-09-17 23:09 list.o
--rw-r--r-- 1 w4118 w4118   258 2012-09-17 05:22 Makefile
--rw-r--r-- 1 w4118 w4118  1029 2012-09-17 23:10 README
--rwxr-xr-x 1 w4118 w4118  7557 2012-09-17 23:08 shell.c
--rw-r--r-- 1 w4118 w4118 20480 2012-09-17 23:09 .shell.c.swp
--rwxr-xr-x 1 w4118 w4118   257 2012-09-17 23:02 shell.h
--rw-r--r-- 1 w4118 w4118  6336 2012-09-17 23:09 shell.o
-drwxr-xr-x 2 w4118 w4118  4096 2012-09-17 23:12 test
-drwxr-xr-x 2 w4118 w4118  4096 2012-09-17 23:13 test1
--rwxr-xr-x 1 w4118 w4118 13373 2012-09-17 23:09 w4118_sh
-$ history
-[1] ls
-[2] path + /bin
-[3] ls
-[4] mkdir test1
-[5] cd test1
-[6] history
-[7] cd ..
-[8] ls
-[9] history
-[10] ls -la
-$ !5
-$ ls
-$ path
-/bin:
-$ path
-/bin:
-$ path - /bin
-$ path
-$ exit
-w4118@osvm:shell$ 
